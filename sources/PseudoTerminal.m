@@ -654,7 +654,7 @@ static NSRect iTermRectCenteredVerticallyWithinRect(NSRect frameToCenter, NSRect
         [myWindow setFrame:initialFrame display:NO];
     }
 
-    [self updateWindowShadow];
+    //[self updateWindowShadow];
 
     DLog(@"Create window %@", myWindow);
 
@@ -2455,7 +2455,7 @@ ITERM_WEAKLY_REFERENCEABLE
             return NO;
         }
     }
-    [self updateUseTransparency];
+    //[self updateUseTransparency];
     return YES;
 }
 
@@ -3613,14 +3613,14 @@ ITERM_WEAKLY_REFERENCEABLE
     }
     [[self currentTab] recheckBlur];
     [self updateTabColors];  // Updates the window's background color as a side-effect
-    [self updateWindowShadow];
+    //[self updateWindowShadow];
 }
 
-- (BOOL)anySessionInCurrentTabHasTransparency {
+/*- (BOOL)anySessionInCurrentTabHasTransparency {
     return [self.currentTab.sessions anyWithBlock:^BOOL(PTYSession *session) {
         return session.textview.transparencyAlpha < 1;
     }];
-}
+}*/
 
 - (IBAction)toggleUseTransparency:(id)sender
 {
@@ -3855,7 +3855,7 @@ ITERM_WEAKLY_REFERENCEABLE
     } else {
         [self willExitTraditionalFullScreenMode];
     }
-    [self updateWindowShadow];
+    //[self updateWindowShadow];
 
     [self updateTransparencyBeforeTogglingTraditionalFullScreenMode];
     _fullScreen = !_fullScreen;
@@ -3959,10 +3959,10 @@ ITERM_WEAKLY_REFERENCEABLE
 
     [self updateTouchBarIfNeeded:NO];
     [self updateUseMetalInAllTabs];
-    [self updateWindowShadow];
+    //[self updateWindowShadow];
 }
 
-- (void)updateWindowShadow {
+/*- (void)updateWindowShadow {
     switch (windowType_) {
         case WINDOW_TYPE_LION_FULL_SCREEN:
         case WINDOW_TYPE_TRADITIONAL_FULL_SCREEN:
@@ -3992,7 +3992,7 @@ ITERM_WEAKLY_REFERENCEABLE
         }
     }
     self.window.hasShadow = YES;
-}
+}*/
 
 - (BOOL)fullScreen
 {
@@ -4104,7 +4104,7 @@ ITERM_WEAKLY_REFERENCEABLE
     DLog(@"Window will enter lion fullscreen");
     togglingLionFullScreen_ = YES;
     [self updateUseMetalInAllTabs];
-    [self updateWindowShadow];
+    //[self updateWindowShadow];
     [self repositionWidgets];
 }
 
@@ -4135,7 +4135,7 @@ ITERM_WEAKLY_REFERENCEABLE
     }
     [self updateTouchBarIfNeeded:NO];
     [self updateUseMetalInAllTabs];
-    [self updateWindowShadow];
+    //[self updateWindowShadow];
 }
 
 - (void)windowDidFailToEnterFullScreen:(NSWindow *)window {
@@ -4166,7 +4166,7 @@ ITERM_WEAKLY_REFERENCEABLE
     [self fitTabsToWindow];
     [self repositionWidgets];
     [self updateUseMetalInAllTabs];
-    [self updateWindowShadow];
+    //[self updateWindowShadow];
 }
 
 - (void)windowDidExitFullScreen:(NSNotification *)notification
@@ -4194,7 +4194,7 @@ ITERM_WEAKLY_REFERENCEABLE
     [self.window makeFirstResponder:self.currentSession.textview];
     [self updateTouchBarIfNeeded:NO];
     [self updateUseMetalInAllTabs];
-    [self updateWindowShadow];
+    //[self updateWindowShadow];
 }
 
 - (NSRect)windowWillUseStandardFrame:(NSWindow *)sender defaultFrame:(NSRect)defaultFrame {
@@ -4516,7 +4516,7 @@ ITERM_WEAKLY_REFERENCEABLE
     }
     [self updateCurrentLocation];
     [self updateUseMetalInAllTabs];
-    [self updateWindowShadow];
+    //[self updateWindowShadow];
     [[NSNotificationCenter defaultCenter] postNotificationName:iTermSelectedTabDidChange object:tab];
 }
 
@@ -8505,7 +8505,7 @@ ITERM_WEAKLY_REFERENCEABLE
 }
 
 - (void)sessionBackgroundColorDidChangeInTab:(PTYTab *)tab {
-    [self updateWindowShadow];
+    //[self updateWindowShadow];
 }
 
 - (void)currentSessionWordAtCursorDidBecome:(NSString *)word {
@@ -8523,11 +8523,11 @@ ITERM_WEAKLY_REFERENCEABLE
     }];
 }
 
-- (void)numberOfSessionsDidChangeInTab:(PTYTab *)tab {
+/*- (void)numberOfSessionsDidChangeInTab:(PTYTab *)tab {
     if (tab == self.currentTab) {
         [self updateUseTransparency];
     }
-}
+}*/
 
 #pragma mark - Toolbelt
 

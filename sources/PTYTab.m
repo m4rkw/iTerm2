@@ -488,7 +488,7 @@ static void SetAgainstGrainDim(BOOL isVertical, NSSize *dest, CGFloat value) {
         [(SessionView *)[[orderedSessions lastObject] view] setOrdinal:9];
     }
     [realParentWindow_ invalidateRestorableState];
-    [_delegate numberOfSessionsDidChangeInTab:self];
+    //[_delegate numberOfSessionsDidChangeInTab:self];
 }
 
 + (void)_recursiveSetDelegateIn:(NSSplitView *)node to:(id)delegate {
